@@ -9,3 +9,8 @@ Y = dataset.iloc[ : , 3].values
 imputer = Imputer(missing_values) = "NaN", strategy = "mean", axis = 0)
 imputer = imputer.fit(X[ : , 1:3])
 X[ : , 1:3] = imputer.transform(X[ : , 1:3])
+
+labelencoder_x = LabelEncoder()
+X[ : , 0] = labelencoder_x.fit_transform(X[ : , 0])
+
+onehotencoder = OneHotEncoder(categorical_features = [0])
