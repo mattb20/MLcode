@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import Imputer, LabelEncoder, OneHotEncoder
+from sklearn.cross_validation import train_test_split
 
 dataset = pd.read_csv('Data.csv')
 X = dataset.iloc[ : , :-1].values
@@ -17,3 +18,5 @@ onehotencoder = OneHotEncoder(categorical_features = [0])
 X = onehotencoder.fit_transform(X).toarray()
 labelencoder_Y = LabelEncoder()
 Y = labelencoder_Y.fit_transform(Y)
+
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, random_state = 0)
